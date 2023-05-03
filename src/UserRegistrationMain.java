@@ -10,13 +10,16 @@ public class UserRegistrationMain {
         String lastName = sc.nextLine();
         System.out.print("Enter your email: ");
         String email = sc.nextLine();
+        System.out.print("Enter your mobile number: ");
+        String mobile = sc.nextLine();
 
         boolean validFirstName = firstName.matches("^[A-Z][a-zA-Z]{2,}$");
         boolean validLastName = lastName.matches("^[A-Z][a-zA-Z]{2,}$");
         boolean validEmail = email.matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$");
+        boolean validMobile = mobile.matches("^\\d{2} \\d{10}$");
 
-        if(validFirstName && validLastName && validEmail) {
-            System.out.println("Valid input entered: " + firstName + " " + lastName + ", " + email);
+        if(validFirstName && validLastName && validEmail && validMobile) {
+            System.out.println("Valid input entered: " + firstName + " " + lastName + ", " + email + ", " + mobile);
         } else {
             if(!validFirstName) {
                 System.out.println("Invalid first name. First name should start with a capital letter and have a minimum length of 3 characters.");
@@ -26,6 +29,9 @@ public class UserRegistrationMain {
             }
             if(!validEmail) {
                 System.out.println("Invalid email. Email should have 3 mandatory parts (abc, bl & co) and 2 optional (xyz & in) with precise @ and . positions.");
+            }
+            if(!validMobile) {
+                System.out.println("Invalid mobile number. Mobile number should follow the predefined format: country code followed by a space and 10 digit number.");
             }
         }
         sc.close();
